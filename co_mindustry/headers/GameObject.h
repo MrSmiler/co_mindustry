@@ -8,7 +8,7 @@ namespace game2d
 class GameObject
 {
 public:
-	GameObject(const char* texture_sheet, SDL_Renderer* renderer, int x, int y);
+	GameObject(const char* texture_sheet, int x, int y);
 	~GameObject();
 
 	void update();
@@ -19,7 +19,6 @@ private:
 
 	SDL_Rect m_src_rect, m_dst_rect;
 	SDL_Texture* m_texture;
-	SDL_Renderer* m_renderer;
 };
 
 }

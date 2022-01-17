@@ -14,7 +14,7 @@ public:
 	~Game() {
 		//Destroy window
 		SDL_DestroyWindow(m_window);
-		SDL_DestroyRenderer(m_renderer);
+		SDL_DestroyRenderer(renderer);
 		//Quit SDL subsystems
 		SDL_Quit();
 	};
@@ -24,12 +24,12 @@ public:
 	void render();
 	bool running();
 
+	static SDL_Renderer* renderer;
 private:
 	// bool is_running();
 
 	// TODO: i think since windows is created inside this class this should be unique ptr ?
 	SDL_Window* m_window;
-	SDL_Renderer* m_renderer;
 	bool m_is_running;
 };
 

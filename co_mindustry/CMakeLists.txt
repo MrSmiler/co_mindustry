@@ -8,7 +8,7 @@ include_directories(co_mindustry PUBLIC "third_parties/windows/SDL2/include"
 										"headers")
 
 # Add source to this project's executable.
-add_executable (co_mindustry "main.cpp" "src/Game.cpp" "src/TextureManager.cpp" "headers/GameObject.h" "src/GameObject.cpp")
+add_executable (co_mindustry "main.cpp" "src/Game.cpp" "src/TextureManager.cpp" "headers/GameObject.h" "src/GameObject.cpp" "src/Map.cpp")
 
 target_link_directories(co_mindustry PUBLIC "third_parties/windows/SDL2/lib/x64")
 target_link_directories(co_mindustry PUBLIC "third_parties/windows/SDL2_image/lib/x64")

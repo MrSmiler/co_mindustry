@@ -1,18 +1,17 @@
 
 #include <GameObject.h>
 #include <TextureManager.h>
-
+#include <Game.h>
 
 using namespace game2d;
 
-GameObject::GameObject(const char* texture_sheet, SDL_Renderer* renderer, int x, int y)
-	: m_renderer{renderer},
-	m_xpos(x),
+GameObject::GameObject(const char* texture_sheet, int x, int y)
+	: m_xpos(x),
 	m_ypos(y),
 	m_src_rect{},
 	m_dst_rect{}
 {
-	m_texture = TextureManager::LoadTexture(texture_sheet, renderer);
+	m_texture = TextureManager::LoadTexture(texture_sheet);
 }
 
 void GameObject::update()
@@ -27,11 +26,11 @@ void GameObject::update()
 
 	m_dst_rect.x = m_xpos;
 	m_dst_rect.y = m_ypos;
-	m_dst_rect.h = m_src_rect.h * 2;
-	m_dst_rect.w = m_src_rect.w * 2;
+	m_dst_rect.h = m_src_rect.h;
+	m_dst_rect.w = m_src_rect.w;
 }
 
 void GameObject::renderer()
 {
-	SDL_RenderCopy(m_renderer, m_texture, &m_src_rect, &m_dst_rect);
+	SDL_RenderCopy(Game::renderer, m_texture, &m_src_rect, &m_dst_rect);
 }

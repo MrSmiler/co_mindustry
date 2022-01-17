@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <TextureManager.h>
 #include <GameObject.h>
+#include <Map.h>
 
 #include <cstdint>
 #include <iostream>
@@ -12,11 +13,13 @@
 using namespace game2d;
 
 GameObject* player, *player2;
+Map* game_map;
 uint32_t counter;
+
+SDL_Renderer* Game::renderer = nullptr;
 
 Game::Game(const char* title, int window_xpos, int window_ypos, int width, int height, bool fullscreen):
 	m_window{nullptr},
-	m_renderer{nullptr},
 	m_is_running{false}
 {
 	if (int err = SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -30,15 +33,16 @@ Game::Game(const char* title, int window_xpos, int window_ypos, int width, int h
 	if (m_window == nullptr)
 		throw "sdl create window error";
 
-	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
-	if (m_renderer == nullptr)
+	renderer = SDL_CreateRenderer(m_window, -1, 0);
+	if (renderer == nullptr)
 		throw "sdl create surface error";
 
-	SDL_SetRenderDrawColor(m_renderer, 0xff, 0xff, 0xff, 0xff);
+	SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0xff);
 	m_is_running = true;
 
-	player = new GameObject("assets-raw/sprites/units/beta.png", m_renderer, 0, 0);
-	player2 = new GameObject("assets-raw/sprites/units/alpha.png", m_renderer, 100, 100);
+	player = new GameObject("assets-raw/sprites/units/beta.png", 0, 0);
+	player2 = new GameObject("assets-raw/sprites/units/alpha.png", 100, 100);
+	game_map = new Map();
 }
 
 void Game::handle_events()
@@ -63,10 +67,11 @@ void Game::update()
 
 void Game::render()
 {
-	SDL_RenderClear(m_renderer);
+	SDL_RenderClear(renderer);
+	game_map->draw_map();
 	player->renderer();
 	player2->renderer();
-	SDL_RenderPresent(m_renderer);
+	SDL_RenderPresent(renderer);
 }
 
 bool Game::running()

@@ -18,7 +18,7 @@ int main()
 	uint32_t frame_time;
 
 	try {
-		Game game{ "first game", 100, 100, 600, 500, false };
+		Game game{ "first game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false };
 		
 		while (game.running())
 		{

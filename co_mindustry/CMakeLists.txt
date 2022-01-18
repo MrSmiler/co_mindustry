@@ -3,24 +3,22 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-include_directories(co_mindustry PUBLIC "third_parties/windows/SDL2/include"
-										"third_parties/windows/SDL2_image/include"
+include_directories(co_mindustry PUBLIC "third_parties/windows/SFML-2.5.1/include"
 										"headers")
 
 # Add source to this project's executable.
-add_executable (co_mindustry "main.cpp" "src/Game.cpp" "src/TextureManager.cpp" "headers/GameObject.h" "src/GameObject.cpp" "src/Map.cpp")
+add_executable (co_mindustry "main.cpp")
 
-target_link_directories(co_mindustry PUBLIC "third_parties/windows/SDL2/lib/x64")
-target_link_directories(co_mindustry PUBLIC "third_parties/windows/SDL2_image/lib/x64")
+# x64 libs only
+target_link_directories(co_mindustry PUBLIC "third_parties/windows/SFML-2.5.1/lib")
 
 #C:\Users\Mr.Smiler\source\repos\co_mindustry\co_mindustry\third_parties\windows\SDL2\lib\x64\SDL2main.lib
-target_link_libraries(co_mindustry "SDL2main" "SDL2" "SDL2_image")
+target_link_libraries(co_mindustry "sfml-window-s.lib" "sfml-system-s.lib" "opengl32.lib" "freetype.lib"
+								   "winmm.lib" "gdi32.lib" "ws2_32.lib" "winmm.lib"
+								   "openal32.lib" "flac.lib" "vorbisenc.lib" "vorbisfile.lib" "vorbis.lib" "ogg.lib"
+								   "sfml-graphics-s.lib" "sfml-audio-s.lib" "sfml-network-s.lib")
 
-message("mohsen:" ${CMAKE_BINARY_DIR})
-file(COPY "third_parties/windows/SDL2/lib/x64/SDL2.dll" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry)
-file(COPY "third_parties/windows/SDL2_image/lib/x64/libpng16-16.dll" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry)
-file(COPY "third_parties/windows/SDL2_image/lib/x64/zlib1.dll" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry)
-file(COPY "third_parties/windows/SDL2_image/lib/x64/SDL2_image.dll" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry)
+file(COPY "third_parties/windows/SFML-2.5.1/bin/" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry)
 file(COPY "assets-raw/" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry/assets-raw)
 
 

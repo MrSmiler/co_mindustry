@@ -2,41 +2,26 @@
 //
 
 #include <iostream>
-
-#define SDL_MAIN_HANDLED
-#include <SDL.h> 
-#include <Game.h>
-
-using namespace game2d;
+#include <SFML/Graphics.hpp>
 
 int main()
 {
-	const uint32_t FPS = 60;
-	const uint32_t frame_delay = 1000 / 60;
+	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML Works");
+	sf::CircleShape shape(100.f);
+	shape.setFillColor(sf::Color::Green);
 
-	uint32_t frame_start;
-	uint32_t frame_time;
-
-	try {
-		Game game{ "first game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false };
-		
-		while (game.running())
-		{
-			frame_start = SDL_GetTicks();
-			game.handle_events();
-			game.update();
-			game.render();
-			frame_time = SDL_GetTicks() - frame_start;
-
-			if (frame_delay > frame_time)
-				SDL_Delay(frame_delay - frame_time);
-		}
-	}
-	catch (...)
+	while (window.isOpen())
 	{
-		std::cout << "errr happennd" << std::endl;
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+                window.close();
+		}
+		window.clear();
+        window.draw(shape);
+        window.display();
 	}
-
 	return 0;
 }
 

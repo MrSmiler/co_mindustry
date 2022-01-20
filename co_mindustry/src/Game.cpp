@@ -3,9 +3,10 @@
 
 using namespace game2d;
 
+
 Game::Game()
-	: m_window{sf::VideoMode(800, 640), "SFML Works"},
-	player("assets-raw/sprites/units/flare.png")
+	: m_window{sf::VideoMode(800, 640), "mindustry"},
+	player("assets-raw/sprites/units/beta.png", 0, 0)
 {
 	m_window.setFramerateLimit(60);
 }
@@ -37,8 +38,19 @@ void Game::poll_events()
 		}
 		case sf::Event::KeyPressed:
 		{
-			if (m_event.key.code == sf::Keyboard::Escape)
+
+			switch (m_event.key.code)
+			{
+			case sf::Keyboard::Escape:
 				m_window.close();
+				break;
+			case sf::Keyboard::W :
+			case sf::Keyboard::S :
+			case sf::Keyboard::A :
+			case sf::Keyboard::D :
+				player.move(m_event.key.code);
+				break;
+			}
 			break;
 		}
 		}

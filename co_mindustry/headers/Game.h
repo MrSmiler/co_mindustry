@@ -1,11 +1,15 @@
 #pragma once
 
+#include <systems/DrawSystem.h>
+#include <systems/InputSystem.h>
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <Unit.h>
 #include <cstdint>
+#include <entt/entt.hpp>
 
-namespace game2d
+
+namespace mindustry
 {
 class Game
 {
@@ -14,12 +18,12 @@ public:
 	~Game();
 
 	void run_game_loop();
-	void poll_events();
 	void render();
 	void update();
 private:
 	sf::RenderWindow m_window;
-	sf::Event m_event;
-	Unit player;
+	entt::registry m_registry;
+	mindustry::DrawSystem m_draw_system;
+	mindustry::InputSystem m_input_system;
 };
 };

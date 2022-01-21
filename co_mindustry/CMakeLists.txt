@@ -3,13 +3,18 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
+set(CMAKE_CXX_STANDARD 17)
+
 Set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/third_parties/windows/SFML-2.5.1/lib/cmake/SFML")
 find_package (SFML COMPONENTS system window graphics network audio)
-include_directories(co_mindustry PUBLIC "third_parties/windows/SFML-2.5.1/include"
+include_directories(co_mindustry PUBLIC "third_parties/windows/SFML-2.5.1/include" 
+										"third_parties/entt-3.9.0/single_include"
+										"third_parties/tweeny-3.2.0/include"
 										"headers")
 
+
 # Add source to this project's executable.
-add_executable (co_mindustry "main.cpp" "src/Game.cpp" "src/Unit.cpp")
+add_executable (co_mindustry "main.cpp" "src/Game.cpp" "headers/components/InputComponent.h" "headers/components/SpriteComponent.h" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/systems/InputSystem.h" "headers/components/AnimationComponent.h")
 
 # x64 libs only
 target_link_libraries(co_mindustry PUBLIC sfml-graphics sfml-audio sfml-system sfml-network sfml-main sfml-window)

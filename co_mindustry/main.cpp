@@ -3,12 +3,12 @@
 
 #include <Game.h>
 
-using namespace game2d;
+using namespace mindustry;
+
 int main()
 {
 	Game game;
 	game.run_game_loop();
-	
 	return 0;
 }
 

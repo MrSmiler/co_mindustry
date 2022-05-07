@@ -14,7 +14,7 @@ include_directories(co_mindustry PUBLIC "third_parties/windows/SFML-2.5.1/includ
 
 
 # Add source to this project's executable.
-add_executable (co_mindustry "main.cpp" "src/Game.cpp" "headers/components/InputComponent.h" "headers/components/SpriteComponent.h" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/systems/InputSystem.h" "headers/components/AnimationComponent.h")
+add_executable (co_mindustry "main.cpp" "src/Game.cpp" "headers/components/InputComponent.h" "headers/components/SpriteComponent.h" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/systems/InputSystem.h" "headers/components/AnimationComponent.h" "headers/components/MovementComponent.h")
 
 # x64 libs only
 target_link_libraries(co_mindustry PUBLIC sfml-graphics sfml-audio sfml-system sfml-network sfml-main sfml-window)

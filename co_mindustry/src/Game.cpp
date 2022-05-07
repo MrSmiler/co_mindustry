@@ -1,6 +1,8 @@
 #include <Game.h>
 #include <components/InputComponent.h>
 #include <components/SpriteComponent.h>
+#include <components/MovementComponent.h>
+#include <components/AnimationComponent.h>
 
 using namespace mindustry;
 
@@ -12,6 +14,7 @@ Game::Game()
 	auto player = m_registry.create();
 	m_registry.emplace<InputComponent>(player, KeysArray{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D});
 	m_registry.emplace<SpriteComponent>(player, "assets-raw/sprites/units/beta.png");
+	m_registry.emplace<MovementComponent>(player);
 }
 
 Game::~Game()

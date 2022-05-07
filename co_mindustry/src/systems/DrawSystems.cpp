@@ -15,7 +15,7 @@ void DrawSystem::update(entt::registry& registry, sf::RenderWindow& window)
 	for (auto& entity : view)
 	{
 		sf::Sprite sprite = registry.get<SpriteComponent>(entity).get_sprite();
-		m_tween.onStep([&](int x) {
+		/*m_tween.onStep([&](int x) {
 			if (x == 360)
 				return true;
 
@@ -23,7 +23,7 @@ void DrawSystem::update(entt::registry& registry, sf::RenderWindow& window)
 
 			return false;
 		});		
-		m_tween.step(100);
+		m_tween.step(10);*/
 		window.draw(sprite);
 	}
 }

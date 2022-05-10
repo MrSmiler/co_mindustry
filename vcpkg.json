@@ -1,0 +1,21 @@
+
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "my-application",
+  "version": "0.15.2",
+  "dependencies": [
+    {
+      "name": "sfml",
+      "version>=": "2.5.1#12"
+    },
+    {
+      "name": "entt",
+      "version>=": "3.9.0"
+    },
+    {
+      "name": "tweeny",
+      "version>=": "3.2.0"
+    }
+  ],
+  "builtin-baseline": "a5d6d145164e82e67fbf91a4a30f98699d30de63"
+}

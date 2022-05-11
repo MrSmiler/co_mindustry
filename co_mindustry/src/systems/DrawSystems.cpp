@@ -1,6 +1,6 @@
 #include <systems/DrawSystem.h>
 #include <components/SpriteComponent.h>
-#include <tweeny.h>
+#include <tweeny/tweeny.h>
 
 using namespace mindustry;
 

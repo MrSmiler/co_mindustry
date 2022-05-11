@@ -1,7 +1,7 @@
 #pragma once
 #include <entt/entt.hpp>
 #include <SFML/Graphics.hpp>
-#include <tweeny.h>
+#include <tweeny/tweeny.h>
 
 namespace mindustry
 {

@@ -14,7 +14,7 @@ include_directories("$ENV{VCPKG_ROOT}/${VCPKG_TARGET_TRIPLET}/include")
 
 
 # Add source to this project's executable.
-add_executable (mindustry "main.cpp" "src/Game.cpp" "headers/components/InputComponent.h" "headers/components/SpriteComponent.h" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/systems/InputSystem.h" "headers/components/AnimationComponent.h" "headers/components/MovementComponent.h")
+add_executable (mindustry "main.cpp" "src/Game.cpp" "headers/components/InputComponent.h" "headers/components/SpriteComponent.h" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/systems/InputSystem.h" "headers/components/AnimationComponent.h" "headers/components/MovementComponent.h" "headers/components/PhysicComponent.h")
 
 # x64 libs only
 target_link_libraries(mindustry PUBLIC sfml-graphics sfml-audio sfml-system sfml-network sfml-main sfml-window)

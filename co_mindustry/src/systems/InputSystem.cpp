@@ -1,14 +1,16 @@
 
+#include <iostream>
 #include <systems/InputSystem.h>
 #include <components/InputComponent.h>
 #include <components/SpriteComponent.h>
 #include <components/MovementComponent.h>
+#include <components/PhysicComponent.h>
 
 using namespace mindustry;
 
 void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 {
-	auto view = registry.view<InputComponent, MovementComponent, SpriteComponent>();
+	auto view = registry.view<InputComponent, MovementComponent, SpriteComponent, PhysicComponent>();
 	using Direction = MovementComponent::Direction;
 	
 	for (auto& entity : view)
@@ -16,9 +18,12 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 		InputComponent& input = registry.get<InputComponent>(entity);
 		MovementComponent& movement = registry.get<MovementComponent>(entity);
 		sf::Sprite& sprite = registry.get<SpriteComponent>(entity).get_sprite();
+		b2Body* b2body = registry.get<PhysicComponent>(entity).get_body();
 
-		int move_x = 0, move_y = 0;
-
+		b2Vec2 vel = b2body->GetLinearVelocity();
+		vel.x = vel.y = 0;
+		int angle = 0; 
+		// angle = movement.get_rotation_angle(Direction::Up);
 		for (auto& key : input.keys)
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
@@ -26,38 +31,43 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 
 			if (!sf::Keyboard::isKeyPressed(key))
 				continue;
-
-			int angle = 0; 
+			const float speed = (float)2;
 			switch (key)
 			{
-			case sf::Keyboard::W:
-			{
-				angle = movement.get_rotation_angle(Direction::Up);
-				move_y = -10;
-				break;
+				case sf::Keyboard::W:
+				{
+					// move_y = -5;
+					vel.y = -speed;
+					break;
+				}
+				case sf::Keyboard::S:
+				{
+					angle = movement.get_rotation_angle(Direction::Down);
+					// move_y = +5;
+					vel.y = speed;
+					break;
+				}
+				case sf::Keyboard::A:
+				{
+					angle = movement.get_rotation_angle(Direction::Left);
+					// move_x = -5;
+					vel.x = -speed;
+					break;
+				}
+				case sf::Keyboard::D:
+				{
+					angle = movement.get_rotation_angle(Direction::Right);
+					// move_x = +5;
+					vel.x = speed;
+					break;
+				}
 			}
-			case sf::Keyboard::S:
-			{
-				angle = movement.get_rotation_angle(Direction::Down);
-				move_y = +10;
-				break;
-			}
-			case sf::Keyboard::A:
-			{
-				angle = movement.get_rotation_angle(Direction::Left);
-				move_x = -5;
-				break;
-			}
-			case sf::Keyboard::D:
-			{
-				angle = movement.get_rotation_angle(Direction::Right);
-				move_x = +5;
-				break;
-			}
-			}
-			sprite.move(move_x, move_y);
-			sprite.setRotation(angle);
-		}
 			
+		}
+		// sprite.move(move_x, move_y);
+		b2body->SetLinearVelocity(vel);
+		const b2Vec2 pos = b2body->GetPosition();
+		sprite.setPosition(pos.x*100, pos.y*100);
+		sprite.setRotation(angle);
 	}
 }

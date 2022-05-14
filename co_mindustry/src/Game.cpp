@@ -3,20 +3,21 @@
 #include <components/SpriteComponent.h>
 #include <components/MovementComponent.h>
 #include <components/AnimationComponent.h>
+#include <components/PhysicComponent.h>
 #include <box2d/box2d.h>
 
 using namespace mindustry;
 
-
 Game::Game()
 	: m_window{ sf::VideoMode(800, 640), "mindustry" },
-	m_b2world{ b2Vec2{0, 0} }
+	m_b2world{ b2Vec2{0, 0} } // there is no gravity in this game
 {
 	m_window.setFramerateLimit(60);
 	auto player = m_registry.create();
 	m_registry.emplace<InputComponent>(player, KeysArray{sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::A, sf::Keyboard::D});
 	m_registry.emplace<SpriteComponent>(player, "assets-raw/sprites/units/beta.png");
 	m_registry.emplace<MovementComponent>(player);
+	m_registry.emplace<PhysicComponent>(player, &m_b2world, 200, 200, 56, 54);
 }
 
 Game::~Game()
@@ -28,6 +29,10 @@ void Game::run_game_loop()
 	while (m_window.isOpen())
 	{
 		m_window.clear(sf::Color::White);
+		float timeStep = 1.0f / 60.0f;
+		int32 velocityIterations = 6;
+		int32 positionIterations = 2;
+		m_b2world.Step(timeStep, velocityIterations, positionIterations);
 		update();
 		render();
 	}

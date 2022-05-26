@@ -20,7 +20,7 @@ public:
 		m_b2body = world->CreateBody(&bodyDef);
 
 		float pw = (float)width / 200;
-		float ph = (float)height / 100;
+		float ph = (float)height / 200;
 		b2PolygonShape dynamicBox;
 
 		dynamicBox.SetAsBox(pw, ph);
@@ -32,23 +32,26 @@ public:
 
 		m_b2body->CreateFixture(&fixtureDef);
 	}
-	b2Body* get_body()
-	{
-		return m_b2body;
-	}
-	float pixle_to_b2(float) noexcept
-	{
-
-	}
 	~PhysicComponent()
 	{
 		// TODO: should we destroy fixture from the body
 
 		m_b2world->DestroyBody(m_b2body);
 	}
-	
+	int get_scale_factor()
+	{
+		return scale_factor;
+	}
+
+	b2Body* get_body()
+	{
+		return m_b2body;
+	}
+
 private:
+	static const int scale_factor = 100;
 	b2World* m_b2world;
 	b2Body* m_b2body;
+
 };
 }

@@ -19,6 +19,10 @@
     {
       "name": "box2d",
       "version>=": "2.4.1#2"
+    },
+    {
+      "name": "python3",
+      "version>=": "3.10.2"
     }
   ],
   "builtin-baseline": "a5d6d145164e82e67fbf91a4a30f98699d30de63"

@@ -18,9 +18,11 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 		InputComponent& input = registry.get<InputComponent>(entity);
 		MovementComponent& movement = registry.get<MovementComponent>(entity);
 		sf::Sprite& sprite = registry.get<SpriteComponent>(entity).get_sprite();
-		b2Body* b2body = registry.get<PhysicComponent>(entity).get_body();
+		PhysicComponent& physic = registry.get<PhysicComponent>(entity);
+		b2Body* b2body = physic.get_body();
 
 		b2Vec2 vel = b2body->GetLinearVelocity();
+
 		vel.x = vel.y = 0;
 		int angle = 0; 
 		// angle = movement.get_rotation_angle(Direction::Up);
@@ -64,10 +66,14 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 			}
 			
 		}
-		// sprite.move(move_x, move_y);
+
 		b2body->SetLinearVelocity(vel);
+
 		const b2Vec2 pos = b2body->GetPosition();
-		sprite.setPosition(pos.x*100, pos.y*100);
+
+		sprite.setPosition(pos.x*physic.get_scale_factor(),
+						   pos.y*physic.get_scale_factor());
+
 		sprite.setRotation(angle);
 	}
 }

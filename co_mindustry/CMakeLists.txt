@@ -9,6 +9,8 @@ find_package(SFML COMPONENTS system window graphics network audio)
 find_package(Tweeny CONFIG REQUIRED)
 find_package(EnTT CONFIG REQUIRED)
 find_package(box2d CONFIG REQUIRED)
+find_package(Python3 COMPONENTS Development REQUIRED)
+
 include_directories(co_mindustry PUBLIC "headers")
 include_directories("$ENV{VCPKG_ROOT}/${VCPKG_TARGET_TRIPLET}/include")
 
@@ -18,7 +20,8 @@ add_executable (mindustry "main.cpp" "src/Game.cpp" "headers/components/InputCom
 
 # x64 libs only
 target_link_libraries(mindustry PUBLIC sfml-graphics sfml-audio sfml-system sfml-network sfml-main sfml-window)
-target_link_libraries(mindustry PRIVATE box2d::box2d)
+target_link_libraries(mindustry PUBLIC box2d::box2d)
+target_link_libraries(mindustry PUBLIC Python3::Python)
 
 file(COPY "assets-raw/" DESTINATION ${CMAKE_BINARY_DIR}/co_mindustry/assets-raw)
 

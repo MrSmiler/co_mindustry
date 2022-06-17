@@ -33,6 +33,7 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 
 			if (!sf::Keyboard::isKeyPressed(key))
 				continue;
+
 			const float speed = (float)2;
 			switch (key)
 			{

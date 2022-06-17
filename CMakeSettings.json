@@ -17,6 +17,35 @@
           "type": "PATH"
         }
       ]
+    },
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": [
+        {
+          "name": "X_VCPKG_APPLOCAL_DEPS_INSTALL",
+          "value": "False",
+          "type": "BOOL"
+        },
+        {
+          "name": "VCPKG_PREFER_SYSTEM_LIBS",
+          "value": "False",
+          "type": "BOOL"
+        },
+        {
+          "name": "CMAKE_MAKE_PROGRAM",
+          "value": "C:/Program Files/CMake/bin/cmake.exe",
+          "type": "FILEPATH"
+        }
+      ],
+      "cmakeExecutable": "C:/Program Files/CMake/bin/cmake.exe"
     }
   ]
 }

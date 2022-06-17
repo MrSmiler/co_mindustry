@@ -22,8 +22,12 @@
     },
     {
       "name": "python3",
-      "version>=": "3.10.2"
+      "version>=": "3.10.2#2"
+    },
+    {
+      "name": "nlohmann-json",
+      "version>=": "3.10.5"
     }
   ],
-  "builtin-baseline": "a5d6d145164e82e67fbf91a4a30f98699d30de63"
+  "builtin-baseline": "faed44dfa013088fe1910908a8a65887622f412f"
 }

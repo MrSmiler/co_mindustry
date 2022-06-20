@@ -36,7 +36,7 @@ public:
 	{
 		// TODO: should we destroy fixture from the body
 
-		m_b2world->DestroyBody(m_b2body);
+		// m_b2world->DestroyBody(m_b2body);
 	}
 	int get_scale_factor()
 	{

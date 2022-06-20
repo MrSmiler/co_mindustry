@@ -13,7 +13,7 @@
       "variables": [
         {
           "name": "SFML_DIR",
-          "value": "C:/Users/Mr.Smiler/source/repos/co_mindustry/co_mindustry/third_parties/windows/SFML-2.5.1/lib/cmake/SFML",
+          "value": "",
           "type": "PATH"
         }
       ]

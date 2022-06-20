@@ -14,27 +14,23 @@ void DrawSystem::update(entt::registry& registry, sf::RenderWindow& window)
 
 	auto map_view = registry.view<GameMap>();
 	
+	// sf::View player_view(sf::FloatRect(0.f, 0.f, 500.f, 500.f));
+	// sf::View player_view(sf::Vector2f(400, 400), sf::Vector2f(100, 100));
+
 	for (auto& entity : map_view)
 	{
 		GameMap game_map = registry.get<GameMap>(entity);
 
-		int tile_counter = 0;
-		for (auto &tile_index: game_map.m_map)
-		{
-			sf::Texture &texture = game_map.m_resources[tile_index];
-			sf::Sprite sprite;
-			sprite.setTexture(texture);
-			// sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
-			int width = window.getSize().x;
-			int height = window.getSize().y;
-			int i = tile_counter % (width / 32);
-			int j = tile_counter / (height / 32);
+		sf::Texture& texture = game_map.m_tileset;
 
-			sprite.setPosition(i * 32, j * 32);
-			tile_counter++;
-			window.draw(sprite);
-		}
+		sf::RenderStates states;
 
+		states.texture = &texture;
+
+		// window.setView(player_view);
+
+		
+		window.draw(game_map.m_vertices, states);
 	}
 	
 	for (auto& entity : view)

@@ -7,8 +7,8 @@ using namespace mindustry;
 
 int main(int argc, char *argv[])
 {
-	Game game;
-	game.run_game_loop();
+	Game *game = new Game;
+	game->run_game_loop();
 
 	return 0;
 }

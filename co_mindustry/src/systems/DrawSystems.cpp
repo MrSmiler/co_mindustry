@@ -21,7 +21,9 @@ void DrawSystem::update(entt::registry& registry, sf::RenderWindow& window)
 	{
 		GameMap game_map = registry.get<GameMap>(entity);
 
-		sf::Texture& texture = game_map.m_tileset;
+		sf::Texture& texture = game_map.get_tileset_texture();
+
+		// game_map.create_map_vertex()
 
 		sf::RenderStates states;
 
@@ -30,7 +32,7 @@ void DrawSystem::update(entt::registry& registry, sf::RenderWindow& window)
 		// window.setView(player_view);
 
 		
-		window.draw(game_map.m_vertices, states);
+		window.draw(game_map.get_vertices(), states);
 	}
 	
 	for (auto& entity : view)

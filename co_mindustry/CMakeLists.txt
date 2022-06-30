@@ -16,7 +16,7 @@ include_directories("vcpkg_installed/${VCPKG_TARGET_TRIPLET}/include")
 
 
 # Add source to this project's executable.
-add_executable (mindustry "main.cpp" "src/Game.cpp" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp")
+add_executable (mindustry "main.cpp" "src/Game.cpp" "src/systems/DrawSystems.cpp" "src/systems/InputSystem.cpp" "headers/utils/vector2d.h" "headers/components/CameraComponent.h")
 
 # x64 libs only
 target_link_libraries(mindustry PRIVATE sfml-graphics sfml-audio sfml-system sfml-network sfml-main sfml-window)

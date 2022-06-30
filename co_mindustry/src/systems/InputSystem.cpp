@@ -5,11 +5,35 @@
 #include <components/SpriteComponent.h>
 #include <components/MovementComponent.h>
 #include <components/PhysicComponent.h>
+#include <components/CameraComponent.h>
 
 using namespace mindustry;
 
 void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 {
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		window.close();
+
+	auto view = registry.view<CameraComponent>();
+
+
+
+	for (auto& entity : view)
+	{
+		CameraComponent& camera = registry.get<CameraComponent>(entity);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+			camera.set_y(camera.y() - 1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+			camera.set_x(camera.x() + 1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			camera.set_y(camera.y() + 1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+			camera.set_x(camera.x() - 1);
+	}
+
+	/*
 	auto view = registry.view<InputComponent, MovementComponent, SpriteComponent, PhysicComponent>();
 	using Direction = MovementComponent::Direction;
 	
@@ -77,4 +101,5 @@ void InputSystem::update(entt::registry& registry, sf::RenderWindow& window)
 
 		sprite.setRotation(angle);
 	}
+	*/
 }

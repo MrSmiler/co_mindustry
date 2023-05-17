@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5f2mtlvrd57t"]
+
+[ext_resource type="Texture2D" uid="uid://b14o50vai8e61" path="res://assets/units/poly.png" id="1_5owxl"]
+[ext_resource type="Script" path="res://unit.gd" id="1_eoo60"]
+[ext_resource type="PackedScene" uid="uid://b8ymsg5m6f7mm" path="res://bullet.tscn" id="2_btdcq"]
+[ext_resource type="AudioStream" uid="uid://13r6wk1gvvcb" path="res://assets/sounds/AlliedGunfire.wav" id="4_dn1sv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8l3s"]
+size = Vector2(49, 45)
+
+[node name="Poly" type="CharacterBody2D"]
+position = Vector2(293, 160)
+collision_layer = 2
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 0.23911
+script = ExtResource("1_eoo60")
+BulletScene = ExtResource("2_btdcq")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_5owxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_s8l3s")
+
+[node name="ShootingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dn1sv")

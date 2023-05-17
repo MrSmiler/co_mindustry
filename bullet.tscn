@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ymsg5m6f7mm"]
+
+[ext_resource type="Texture2D" uid="uid://djcbd8j5qwkoc" path="res://assets/particles/particle.png" id="1_ugtyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks7da"]
+size = Vector2(15, 15)
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ugtyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ks7da")

@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqavtt4dj3qxo"]
+[gd_scene load_steps=6 format=3 uid="uid://dqavtt4dj3qxo"]
 
+[ext_resource type="PackedScene" uid="uid://bfp0qbjqbde3l" path="res://desert.tscn" id="1_63ydm"]
 [ext_resource type="PackedScene" uid="uid://e2o1akdr138w" path="res://conveyer_belt.tscn" id="1_86gpc"]
 [ext_resource type="PackedScene" uid="uid://c5f2mtlvrd57t" path="res://poly.tscn" id="2_s065g"]
 [ext_resource type="Script" path="res://camera.gd" id="3_vcng0"]
 [ext_resource type="PackedScene" uid="uid://xyv74p8otyro" path="res://copper.tscn" id="4_17vlt"]
 
 [node name="Main" type="Node"]
+
+[node name="desert" parent="." instance=ExtResource("1_63ydm")]
 
 [node name="ConveyerBelt" parent="." instance=ExtResource("1_86gpc")]
 position = Vector2(549, 254)

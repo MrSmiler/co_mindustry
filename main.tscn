@@ -1,47 +1,30 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqavtt4dj3qxo"]
 
 [ext_resource type="PackedScene" uid="uid://bfp0qbjqbde3l" path="res://desert.tscn" id="1_63ydm"]
-[ext_resource type="PackedScene" uid="uid://e2o1akdr138w" path="res://conveyer_belt.tscn" id="1_86gpc"]
-[ext_resource type="PackedScene" uid="uid://c5f2mtlvrd57t" path="res://poly.tscn" id="2_s065g"]
-[ext_resource type="Script" path="res://camera.gd" id="3_vcng0"]
-[ext_resource type="PackedScene" uid="uid://xyv74p8otyro" path="res://copper.tscn" id="4_17vlt"]
+[ext_resource type="Script" path="res://main.gd" id="1_xbmvm"]
+[ext_resource type="PackedScene" uid="uid://vgmt4id3o80i" path="res://player.tscn" id="2_axqcc"]
+[ext_resource type="PackedScene" uid="uid://laeyeo065wub" path="res://alpha.tscn" id="2_lvrhy"]
+[ext_resource type="PackedScene" uid="uid://cncin804b5lb5" path="res://poly.tscn" id="2_s065g"]
 
 [node name="Main" type="Node"]
 
-[node name="desert" parent="." instance=ExtResource("1_63ydm")]
+[node name="Game" type="CanvasLayer" parent="." groups=["game_render_layer"]]
+layer = 0
+follow_viewport_enabled = true
+script = ExtResource("1_xbmvm")
 
-[node name="ConveyerBelt" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(549, 254)
+[node name="desert" parent="Game" instance=ExtResource("1_63ydm")]
 
-[node name="ConveyerBelt2" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(613, 254)
+[node name="Alpha" parent="Game" instance=ExtResource("2_lvrhy")]
+position = Vector2(820, 255)
 
-[node name="ConveyerBelt3" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(581, 254)
+[node name="Alpha2" parent="Game" instance=ExtResource("2_lvrhy")]
+position = Vector2(585, 247)
 
-[node name="ConveyerBelt4" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(644, 254)
+[node name="Poly" parent="Game" instance=ExtResource("2_s065g")]
+position = Vector2(413, 390)
 
-[node name="ConveyerBelt5" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(708, 254)
+[node name="Player" parent="Game/Poly" instance=ExtResource("2_axqcc")]
+position = Vector2(-390.063, -244.456)
 
-[node name="ConveyerBelt6" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(676, 254)
-
-[node name="ConveyerBelt7" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(453, 254)
-
-[node name="ConveyerBelt8" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(517, 254)
-
-[node name="ConveyerBelt9" parent="." instance=ExtResource("1_86gpc")]
-position = Vector2(485, 254)
-
-[node name="Poly" parent="." instance=ExtResource("2_s065g")]
-position = Vector2(488, 56)
-
-[node name="Camera" type="Camera2D" parent="Poly"]
-script = ExtResource("3_vcng0")
-
-[node name="Copper" parent="." instance=ExtResource("4_17vlt")]
-position = Vector2(464, 288)
+[node name="Hud" type="CanvasLayer" parent="."]

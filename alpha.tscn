@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://laeyeo065wub"]
+
+[ext_resource type="Script" path="res://unit.gd" id="1_2q4x6"]
+[ext_resource type="Texture2D" uid="uid://q38f2efa6iph" path="res://assets/spritesheets/units.png" id="1_udjmk"]
+[ext_resource type="PackedScene" uid="uid://b8ymsg5m6f7mm" path="res://bullet.tscn" id="2_nipjm"]
+[ext_resource type="AudioStream" uid="uid://b5uol3ng5qfoy" path="res://assets/sounds/bang.ogg" id="4_3xqwa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2su1k"]
+size = Vector2(80, 120)
+
+[node name="Alpha" type="CharacterBody2D"]
+z_index = 1
+input_pickable = true
+script = ExtResource("1_2q4x6")
+BulletScene = ExtResource("2_nipjm")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_udjmk")
+region_enabled = true
+region_rect = Rect2(1028.12, 206.235, 121.619, 82.5221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2su1k")
+
+[node name="ShootingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3xqwa")

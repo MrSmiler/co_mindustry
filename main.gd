@@ -5,6 +5,7 @@ var camera_speed = 20
 
 func _init():
 	add_to_group("main")
+	add_to_group("game_render_layer")
 	child_entered_tree.connect(_node_enterd_tree)
 	child_exiting_tree.connect(_node_exited_tree)
 
@@ -21,4 +22,4 @@ func _node_exited_tree(node: Node):
 	
 		
 func _set_direction(dir: Vector2):
-	player.get_node("Camera").position += dir * camera_speed
+	player.global_position += dir * camera_speed

@@ -1,14 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8ymsg5m6f7mm"]
+[gd_scene load_steps=10 format=3 uid="uid://b8ymsg5m6f7mm"]
 
+[ext_resource type="Script" path="res://bullet.gd" id="1_81fn3"]
 [ext_resource type="Texture2D" uid="uid://djcbd8j5qwkoc" path="res://assets/particles/particle.png" id="1_ugtyt"]
+[ext_resource type="Texture2D" uid="uid://cyy4pqgj57y5t" path="res://assets/spritesheets/Red Effect Bullet Impact Explosion 32x32.png" id="3_paiwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks7da"]
 size = Vector2(15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko4as"]
+atlas = ExtResource("3_paiwc")
+region = Rect2(503, 416, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8agda"]
+atlas = ExtResource("3_paiwc")
+region = Rect2(537, 416, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aod8"]
+atlas = ExtResource("3_paiwc")
+region = Rect2(571, 416, 34, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv14f"]
+atlas = ExtResource("3_paiwc")
+region = Rect2(605, 416, 34, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xd0jb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ko4as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8agda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aod8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv14f")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}]
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 2
 mass = 0.01
 gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_81fn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -17,3 +58,9 @@ texture = ExtResource("1_ugtyt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ks7da")
+
+[node name="HitExplosion" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xd0jb")
+animation = &"explosion"
+speed_scale = 5.0

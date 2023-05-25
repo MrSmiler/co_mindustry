@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cncin804b5lb5"]
+
+[ext_resource type="PackedScene" uid="uid://laeyeo065wub" path="res://unit_template.tscn" id="1_ks06q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifk2u"]
+size = Vector2(49, 44)
+
+[node name="PolyUnit" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="UnitTemplate" parent="." instance=ExtResource("1_ks06q")]
+
+[node name="Sprite2D" parent="UnitTemplate" index="0"]
+region_enabled = true
+region_rect = Rect2(860.207, 79.0494, 43.6525, 49.0692)
+
+[node name="CollisionShape2D" parent="UnitTemplate" index="1"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ifk2u")
+
+[editable path="UnitTemplate"]

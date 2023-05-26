@@ -17,7 +17,6 @@ script = ExtResource("1_xbmvm")
 [node name="PolyUnit" parent="Game" instance=ExtResource("3_4y7jn")]
 position = Vector2(759, 216)
 
-[node name="Player" parent="Game/PolyUnit" instance=ExtResource("2_axqcc")]
-position = Vector2(-759, -216)
+[node name="Player" parent="Game" instance=ExtResource("2_axqcc")]
 
 [node name="Hud" type="CanvasLayer" parent="."]

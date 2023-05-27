@@ -1,4 +1,8 @@
-extends Node2D
+extends CharacterBody2D
+class_name Unit
+
+var direction = Vector2.ZERO
+
 
 @export var speed = 300
 @export var bullet_speed = 500
@@ -9,14 +13,13 @@ extends Node2D
 	set(value):
 		hitpoints = value
 		if (hitpoints <= 0):
-			queue_free()
+			_destroy_animation()
 
 var _BulletScene = preload("res://bullet.tscn")
 var _mouse_inside: bool = false
 
-
 func set_direction(direction: Vector2):
-	$UnitTemplate.direction = direction
+	direction = direction
 
 func do_damage(amount: int):
 	hitpoints -= amount
@@ -33,17 +36,17 @@ func fire_bullet():
 	bullet.add_collision_exception_with(self)
 	bullet.linear_velocity = shoot_direction * bullet_speed
 	get_tree().get_first_node_in_group("game_render_layer").add_child(bullet)
-	$UnitTemplate.get_node("ShootingSound").play()
+	get_node("ShootingSound").play()
 
-	
-	
 	
 func _ready():
 	add_to_group("damageable")
 	add_to_group("unit")
-	$UnitTemplate.speed = speed
-	$UnitTemplate.mouse_entered.connect(_mouse_enterd)
-	$UnitTemplate.mouse_exited.connect(_mouse_exited)
+	mouse_entered.connect(_mouse_enterd)
+	mouse_exited.connect(_mouse_exited)
+	$ExplosionAnimation.animation_finished.connect(_destroy_animation_finished_handler)
+	$ExplosionAnimation.hide()
+	
 		
 func _mouse_enterd():
 	_mouse_inside = true
@@ -54,5 +57,26 @@ func _mouse_exited():
 func _process(delta):
 	if Input.is_action_just_pressed("swtich_player") and _mouse_inside:
 		var player = get_tree().get_first_node_in_group("player")
-		get_parent().remove_child(self)
-		player.add_child(self)
+		player.get_parent().remove_child(player)
+		add_child(player)
+
+
+func _physics_process(delta):
+	
+	velocity = direction * speed
+	
+	var collision = move_and_collide(velocity * delta)
+	look_at(direction + global_position)
+
+	
+func _destroy_animation():
+	$Sprite2D.hide()
+	$CollisionShape2D.set_deferred("disabled", true)
+	$ExplosionSound.play()
+	$ExplosionAnimation.play("explosion")
+	$ExplosionAnimation.show()
+	
+
+
+func _destroy_animation_finished_handler():
+	get_parent().queue_free()

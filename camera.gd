@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 # Lower cap for the `_zoom_level`.
 @export var min_zoom := 0.5
 # Upper cap for the `_zoom_level`.
@@ -14,18 +13,15 @@ var _zoom_level = 1.0
 
 var tween
 
+func _ready():
+	add_to_group("camera")
+
 func _unhandled_input(event):
 	if event.is_action_pressed("zoom_in"):
 		_set_zoom_level(_zoom_level + zoom_factor)
 	if event.is_action_pressed("zoom_out"):
 		_set_zoom_level(_zoom_level - zoom_factor)
 		
-	
-	
-# Called when the node enters the scene tree for the first time.
-
-
-	
 func _set_zoom_level(value: float) -> void:
 	tween = create_tween()
 	# We limit the value between `min_zoom` and `max_zoom`

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1dwsjxwobon3"]
+
+[ext_resource type="PackedScene" uid="uid://laeyeo065wub" path="res://unit.tscn" id="1_0oc5c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6htk"]
+size = Vector2(81, 121)
+
+[node name="AlphaUnit" type="Node2D"]
+
+[node name="Unit" parent="." instance=ExtResource("1_0oc5c")]
+
+[node name="Sprite2D" parent="Unit" index="0"]
+region_enabled = true
+
+[node name="CollisionShape2D" parent="Unit" index="1"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_o6htk")
+
+[editable path="Unit"]

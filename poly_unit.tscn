@@ -9,6 +9,9 @@ size = Vector2(49, 44)
 metadata/_edit_group_ = true
 
 [node name="Unit" parent="." instance=ExtResource("1_ks06q")]
+z_index = 2
+collision_layer = 2
+collision_mask = 2
 
 [node name="Sprite2D" parent="Unit" index="0"]
 region_enabled = true

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xyv74p8otyro"]
+
+[ext_resource type="Texture2D" uid="uid://w6d55pte2psf" path="res://assets/items/copper.png" id="1_euxj0"]
+[ext_resource type="Script" path="res://item.gd" id="1_y6qiy"]
+
+[node name="Item" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_euxj0")
+script = ExtResource("1_y6qiy")

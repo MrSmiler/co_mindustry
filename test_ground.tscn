@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://xfwnqx26alcg"]
+
+[ext_resource type="PackedScene" uid="uid://e2o1akdr138w" path="res://conveyor_belt.tscn" id="1_dpogk"]
+
+[node name="TestGround" type="Node2D"]
+
+[node name="ConveyerBelt" parent="." instance=ExtResource("1_dpogk")]
+position = Vector2(424, 256)
+constant_linear_velocity = Vector2(100, 0)
+
+[node name="ConveyerBelt2" parent="." instance=ExtResource("1_dpogk")]
+position = Vector2(552, 256)
+constant_linear_velocity = Vector2(100, 0)
+
+[node name="ConveyerBelt3" parent="." instance=ExtResource("1_dpogk")]
+position = Vector2(520, 256)
+constant_linear_velocity = Vector2(100, 0)
+
+[node name="ConveyerBelt4" parent="." instance=ExtResource("1_dpogk")]
+position = Vector2(488, 256)
+constant_linear_velocity = Vector2(100, 0)
+
+[node name="ConveyerBelt5" parent="." instance=ExtResource("1_dpogk")]
+position = Vector2(456, 256)
+constant_linear_velocity = Vector2(100, 0)

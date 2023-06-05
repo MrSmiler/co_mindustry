@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqavtt4dj3qxo"]
+[gd_scene load_steps=7 format=3 uid="uid://dqavtt4dj3qxo"]
 
 [ext_resource type="PackedScene" uid="uid://bfp0qbjqbde3l" path="res://desert.tscn" id="1_63ydm"]
 [ext_resource type="Script" path="res://main.gd" id="1_xbmvm"]
 [ext_resource type="PackedScene" uid="uid://vgmt4id3o80i" path="res://player.tscn" id="2_axqcc"]
 [ext_resource type="PackedScene" uid="uid://bhcc27t7a223a" path="res://poly_unit.tscn" id="3_4y7jn"]
 [ext_resource type="PackedScene" uid="uid://1dwsjxwobon3" path="res://alpha_unit.tscn" id="5_e4xuu"]
+[ext_resource type="PackedScene" uid="uid://hqayapi308ws" path="res://hud.tscn" id="6_ixlgj"]
 
 [node name="Main" type="Node"]
 
@@ -14,9 +15,10 @@ follow_viewport_enabled = true
 script = ExtResource("1_xbmvm")
 
 [node name="desert" parent="Game" instance=ExtResource("1_63ydm")]
+layer_3/tile_data = PackedInt32Array()
 
 [node name="PolyUnit" parent="Game" instance=ExtResource("3_4y7jn")]
-position = Vector2(857, 283)
+position = Vector2(808, 296)
 
 [node name="AlphaUnit" parent="Game" instance=ExtResource("5_e4xuu")]
 position = Vector2(360, 416)
@@ -34,3 +36,5 @@ position = Vector2(912, 528)
 position = Vector2(576, 328)
 
 [node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="Hud" instance=ExtResource("6_ixlgj")]

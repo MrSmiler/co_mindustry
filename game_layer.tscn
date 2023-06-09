@@ -17,7 +17,6 @@ follow_viewport_enabled = true
 script = ExtResource("1_h5726")
 
 [node name="desert" parent="GameLayer" instance=ExtResource("2_kqqc4")]
-layer_3/tile_data = PackedInt32Array()
 
 [node name="PolyUnit" parent="GameLayer" instance=ExtResource("3_3y5ld")]
 position = Vector2(808, 296)

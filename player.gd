@@ -28,5 +28,5 @@ func _process(delta):
 	else:
 		global_position += direction * camera_speed
 		
-	if Input.is_action_just_pressed("shoot") and attached_to_unit:
+	if Input.is_action_just_pressed("left_click") and attached_to_unit:
 		_target_unit.fire_bullet()

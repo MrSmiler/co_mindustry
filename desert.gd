@@ -1,6 +1,8 @@
 extends TileMap
 
 
+func _init():
+	add_to_group("map")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var sid = get_cell_source_id(3, Vector2(1, 1))

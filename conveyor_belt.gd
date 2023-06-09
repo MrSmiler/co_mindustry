@@ -9,6 +9,9 @@ var _next_conveyor: ConveyorBelt = null
 func accept_item(item: Item) -> void:
 	_item = item
 
+func _init():
+	add_to_group("conveyor_belt")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()

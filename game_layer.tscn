@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqavtt4dj3qxo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_cf3ds"]
+[ext_resource type="Script" path="res://game_layer.gd" id="1_h5726"]
+[ext_resource type="PackedScene" uid="uid://bfp0qbjqbde3l" path="res://desert.tscn" id="2_kqqc4"]
+[ext_resource type="PackedScene" uid="uid://bhcc27t7a223a" path="res://poly_unit.tscn" id="3_3y5ld"]
+[ext_resource type="PackedScene" uid="uid://1dwsjxwobon3" path="res://alpha_unit.tscn" id="4_8dofl"]
+[ext_resource type="PackedScene" uid="uid://vgmt4id3o80i" path="res://player.tscn" id="5_0o37b"]
+[ext_resource type="PackedScene" uid="uid://hqayapi308ws" path="res://hud/hud.tscn" id="6_ikuum"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_cf3ds")
+
+[node name="GameLayer" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
+script = ExtResource("1_h5726")
+
+[node name="desert" parent="GameLayer" instance=ExtResource("2_kqqc4")]
+layer_3/tile_data = PackedInt32Array()
+
+[node name="PolyUnit" parent="GameLayer" instance=ExtResource("3_3y5ld")]
+position = Vector2(808, 296)
+
+[node name="AlphaUnit" parent="GameLayer" instance=ExtResource("4_8dofl")]
+position = Vector2(360, 416)
+
+[node name="AlphaUnit2" parent="GameLayer" instance=ExtResource("4_8dofl")]
+position = Vector2(1112, 344)
+
+[node name="PolyUnit2" parent="GameLayer" instance=ExtResource("3_3y5ld")]
+position = Vector2(440, 816)
+
+[node name="AlphaUnit3" parent="GameLayer" instance=ExtResource("4_8dofl")]
+position = Vector2(912, 528)
+
+[node name="Player" parent="GameLayer" instance=ExtResource("5_0o37b")]
+position = Vector2(576, 328)
+
+[node name="HudLayer" parent="." instance=ExtResource("6_ikuum")]
+visible = false

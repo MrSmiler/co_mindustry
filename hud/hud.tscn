@@ -1,0 +1,186 @@
+[gd_scene load_steps=15 format=3 uid="uid://hqayapi308ws"]
+
+[ext_resource type="Texture2D" uid="uid://besx0khgr8mgr" path="res://assets/icons/turret.png" id="1_3put1"]
+[ext_resource type="Script" path="res://hud/BuildingsPanel.gd" id="1_cpvqh"]
+[ext_resource type="Texture2D" uid="uid://cmvtift1e0gcw" path="res://assets/icons/production.png" id="2_414kc"]
+[ext_resource type="Texture2D" uid="uid://c558yi4bdet8t" path="res://assets/belts/conveyor-0-0.png" id="2_ogb3i"]
+[ext_resource type="Texture2D" uid="uid://bxv7sj085fxgj" path="res://assets/icons/distribution.png" id="3_5lm61"]
+[ext_resource type="Texture2D" uid="uid://cwuttvtdeconx" path="res://assets/icons/liquid.png" id="4_vgooh"]
+[ext_resource type="Texture2D" uid="uid://4os7cpptv75u" path="res://assets/icons/power.png" id="5_ccsdw"]
+[ext_resource type="Texture2D" uid="uid://cd5fdttlv52jk" path="res://assets/icons/defense.png" id="6_gumgf"]
+[ext_resource type="Texture2D" uid="uid://1uvbcjmbe54v" path="res://assets/icons/crafting.png" id="7_sexty"]
+[ext_resource type="Texture2D" uid="uid://cmprxid41um80" path="res://assets/icons/units.png" id="8_jli4n"]
+[ext_resource type="Texture2D" uid="uid://kc6uwlgca3aw" path="res://assets/icons/effect.png" id="9_pvueh"]
+[ext_resource type="Texture2D" uid="uid://c256pgqd3o4pc" path="res://assets/icons/logic.png" id="10_qx6ci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_307w5"]
+bg_color = Color(0.878431, 0.470588, 0.341176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.996078, 0.721569, 0.678431, 1)
+
+[sub_resource type="Theme" id="Theme_ss7g1"]
+HBoxContainer/styles/normal = SubResource("StyleBoxFlat_307w5")
+
+[node name="HudLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("shortcut_context")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+shortcut_context = NodePath("")
+theme = SubResource("Theme_ss7g1")
+
+[node name="BuildingsPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -184.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+script = ExtResource("1_cpvqh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BuildingsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -184.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Buildings" type="Panel" parent="Control/BuildingsPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="Control/BuildingsPanel/HBoxContainer/Buildings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="ConveyorBelt" type="Button" parent="Control/BuildingsPanel/HBoxContainer/Buildings/GridContainer"]
+layout_mode = 2
+icon = ExtResource("2_ogb3i")
+flat = true
+
+[node name="BuildingsTypesPanel" type="Panel" parent="Control/BuildingsPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="GridContainer" type="GridContainer" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Button" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("1_3put1")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("2_414kc")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DistributionButton" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("3_5lm61")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("4_vgooh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button5" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("5_ccsdw")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button6" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("6_gumgf")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button7" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("7_sexty")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button8" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("8_jli4n")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button9" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("9_pvueh")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button10" type="Button" parent="Control/BuildingsPanel/HBoxContainer/BuildingsTypesPanel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+icon = ExtResource("10_qx6ci")
+flat = true
+icon_alignment = 1
+expand_icon = true

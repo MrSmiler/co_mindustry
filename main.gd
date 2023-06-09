@@ -1,10 +1,11 @@
 extends Node
-class_name MainGame
-var direction
-var player
 
 
-func _init():
-	add_to_group("main")
-	add_to_group("game_render_layer")
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$HudLayer.show()
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
